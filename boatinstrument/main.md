@@ -18,7 +18,7 @@ This can be exported and imported from the Settings Page. Its on disk location d
 - **Windows:** %UserProfile%/\<My Documents\>/boatinstrument.json
 - **Flutter-pi:** /boatinstrument.json
 
-**Note:** before starting on flutter-pi installs, if "/boot/boatinstrument.json" exists it is moved to "/boatinstrument.json" and if "/boot/boatinstrument.config" exists it is moved to "/boot/boatinstrument.config".
+**Note:** before starting on flutter-pi installs, if "/boot/boatinstrument.json" exists it is moved to "/boatinstrument.json" and if "/boot/boatinstrument.config" exists it is moved to "/etc/boatinstrument-fpi/config".
 
 This allows you to update the configuration on a minimal OS via the SD Card, e.g. one without SSH or other access.
 
@@ -29,6 +29,9 @@ If required, the config can be manually edited. This is easier if it is reformat
 ```shell
 python3 -m json.tool boatinstrument.json >boatinstrument-formatted.json
 ```
+
+If the "--enable-set-time" command line option is given, e.g. in "/etc/boatinstrument-fpi/config", then you can set the Operating System time from the "navigation.datetime" path by enabling "Set Time" in the Advanced Settings.
+
 ## Box Path Mapping
 
 When a page is displayed, the Boxes register the paths they require. After consolidation to remove any duplicates, the app then subscribes to these via a SignalK WebSocket.
