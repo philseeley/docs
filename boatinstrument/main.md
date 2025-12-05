@@ -39,3 +39,15 @@ When a page is displayed, the Boxes register the paths they require. After conso
 The current list of subscriptions being used by the app can be viewed from the Settings page.
 
 This is list of [Box to Path Mappings](box-path-mappings.md).
+
+## Known Issued and Workarounds
+
+### Linux and IPv6
+
+The **Service Discovery** API on Linux returns IP addresses, whereas the other OSs return hostnames. This causes issues if your SignalK host has an IPv6 address, as the API may return this without the **Scpoe ID** suffix. This causes the connection to fail.
+
+The simple fix is to disable IPv6 on your SignalK host. If this is a Raspberry Pi, then add "ipv6.disable=1" to /boot/firmware/cmdline.txt.
+
+If you leave it enabled, then to connection will likely succeeded after some failed attempts as the **Service Discovery** will eventually return the IPv4 address.
+
+If you need to use IPv6 addresses for your SignalK server, then explicitly specify the required URL, including the local **Scope ID/Interface Name**, e.g. "http://[fe80::bf92:7cd4:fbb:1234%wlp1s0]:3000"
