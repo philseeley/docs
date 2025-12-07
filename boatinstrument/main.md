@@ -46,7 +46,7 @@ This is list of [Box to Path Mappings](box-path-mappings.md).
 
 The **Service Discovery** API on Linux returns IP addresses, whereas the other OSs return hostnames. This causes issues if your SignalK host has an IPv6 address, as the API may return this without the **Scpoe ID** suffix. This causes the connection to fail.
 
-The simple fix is to disable IPv6 on your SignalK host. If this is a Raspberry Pi, then add "ipv6.disable=1" to /boot/firmware/cmdline.txt.
+The simple fix is to disable IPv6 on your SignalK host using the NetworkManger, e.g. nmtui.
 
 If you leave it enabled, then to connection will likely succeeded after some failed attempts as the **Service Discovery** will eventually return the IPv4 address.
 
