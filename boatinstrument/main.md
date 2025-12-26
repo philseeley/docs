@@ -51,3 +51,7 @@ The simple fix is to disable IPv6 on your SignalK host using the NetworkManger, 
 If you leave it enabled, then to connection will likely succeeded after some failed attempts as the **Service Discovery** will eventually return the IPv4 address.
 
 If you need to use IPv6 addresses for your SignalK server, then explicitly specify the required URL, including the local **Scope ID/Interface Name**, e.g. "http://[fe80::bf92:7cd4:fbb:1234%wlp1s0]:3000"
+
+### Starlink Box
+
+Full functionality requires the acceptance of [this](https://github.com/itemir/signalk-starlink/pull/5) pull request to the **signalk-starlink** plugin.
