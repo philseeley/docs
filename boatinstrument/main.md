@@ -55,3 +55,16 @@ If you need to use IPv6 addresses for your SignalK server, then explicitly speci
 ### Starlink Box
 
 Full functionality requires the acceptance of [this](https://github.com/itemir/signalk-starlink/pull/5) pull request to the **signalk-starlink** plugin.
+
+### Auth Token Migration ###
+
+Previous to version 3 of the config settings, authentication was stored on a Box Type basis. This allowed different Boxes to have different levels of authentication. From App version 0.8.0, when Remote Control functionality was introduced, the main App needed authentication. So authentication was simplified and moved to a single "Auth Token" at the App level.
+
+The migration to the v3 config attempts to pick the best "Auth Token" from any already in the config and favoured the Box that required the highest level, i.e. the Anchor Alarm.
+
+The issue that can arise, is that the user may have deleted that device from the SignalK security settings. This results in the following rather cryptic exception when connecting:
+```
+WebSocketChannelException: WebSocketException: Connection to 'http://signalk-server:3000/signalk/v1/stream?subscribe=none#' was not upgraded to websocket, HTTP status code: 401
+
+```
+This can be fixed by either deleting the "Auth Token" or requesting a new one with the required access level.
