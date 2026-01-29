@@ -68,3 +68,25 @@ WebSocketChannelException: WebSocketException: Connection to 'http://signalk-ser
 
 ```
 This can be fixed by either deleting the "Auth Token" or requesting a new one with the required access level.
+
+### Not Updating on BBN ###
+
+Bareboat Necessities (BBN) installs are currently done from a separate clone of the Boat Instrument repo and therefore do not update.
+
+Mikhail is working on an [fix](https://github.com/bareboat-necessities/lysmarine_gen/issues/502), but he's a very busy man.
+
+In the interim you can remove the install before subscribing to the repo:
+
+```shell
+rm $HOME/.local/share/applications/boatinstrument.desktop
+rm -rf $HOME/boatinstrument
+rm $HOME/.config/autostart/boatinstrument.desktop
+```
+
+Install the latest version by following these [instructions](https://philseeley.github.io/debian-ppa/). The app will then auto update.
+
+If you would like the app to continue auto-starting:
+
+```shell
+ln -s /usr/share/applications/name.phil.seeley.boatinstrument.desktop $HOME/.config/autostart/
+```
