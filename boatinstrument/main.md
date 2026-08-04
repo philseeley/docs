@@ -90,3 +90,13 @@ If you would like the app to continue auto-starting:
 ```shell
 ln -s /usr/share/applications/name.phil.seeley.boatinstrument.desktop $HOME/.config/autostart/
 ```
+
+### Not using the signalk-boatinstrument-plugin ###
+
+If you do not or cannot install the **signalk-boatinstrument-plugin**, then you may experience odd timing issues when using functionality like Timers or Remote Control.
+
+These functions update paths on the SignalK server and this can result in multiple instances of the same path if done without the plugin. This happens because SignalK treats updates over WebSockets from different clients as different sources.
+
+The plugin is considered the source when it performs updates and therefore avoids the multiple instance issue.
+
+Most issues only become apparent when subscribing to paths, as SignalK will initially send the values of all instances, e.g. if you switch to a Page with a Timer Display Box, then all instances of that Timer's path will be sent. If one value is Running and one is Stopped the results are indeterminate.
