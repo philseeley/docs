@@ -56,7 +56,7 @@ If you need to use IPv6 addresses for your SignalK server, then explicitly speci
 
 Full functionality requires the acceptance of [this](https://github.com/itemir/signalk-starlink/pull/5) pull request to the **signalk-starlink** plugin.
 
-### Auth Token Migration ###
+### Auth Token Migration
 
 Previous to version 3 of the config settings, authentication was stored on a Box Type basis. This allowed different Boxes to have different levels of authentication. From App version 0.8.0, when Remote Control functionality was introduced, the main App needed authentication. So authentication was simplified and moved to a single "Auth Token" at the App level.
 
@@ -69,7 +69,9 @@ WebSocketChannelException: WebSocketException: Connection to 'http://signalk-ser
 ```
 This can be fixed by either deleting the "Auth Token" or requesting a new one with the required access level.
 
-### Not Updating on BBN ###
+**Note:** the sample configuration files prior to version 0.10.0 also contained Auth Tokens by mistake. These could also be migrated by mistake.
+
+### Not Updating on BBN
 
 Bareboat Necessities (BBN) installs are currently done from a separate clone of the Boat Instrument repo and therefore do not update.
 
@@ -91,7 +93,7 @@ If you would like the app to continue auto-starting:
 ln -s /usr/share/applications/name.phil.seeley.boatinstrument.desktop $HOME/.config/autostart/
 ```
 
-### Not using the signalk-boatinstrument-plugin ###
+### Not using the signalk-boatinstrument-plugin
 
 If you do not or cannot install the **signalk-boatinstrument-plugin**, then you may experience odd timing issues when using functionality like Timers or Remote Control.
 
