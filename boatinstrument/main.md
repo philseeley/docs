@@ -32,6 +32,28 @@ python3 -m json.tool boatinstrument.json >boatinstrument-formatted.json
 
 If the "--enable-set-time" command line option is given, e.g. in "/etc/boatinstrument-fpi/config", then you can set the Operating System time from the "navigation.datetime" path by enabling "Set Time" in the Advanced Settings.
 
+## Design Goals
+
+The aim of the app is to provide an instrument closer to a standard marine display, rather than a general dashboard like Kip and without the overhead of a browser. The app can also be run without a desktop environment on dedicated hardware.
+
+The app displays Pages of Boxes in very flexible layouts and has a framework designed to imposes the minimum amount of restrictions on the contents of a Box, whilst also providing simple APIs for subscribing to SignalK data.
+
+The aim was to allow multiple developers to produce Boxes that fitted their particular needs, without having to worry about or re-code things like connection handling, path subscriptions, data timeouts, Page layouts and Box selection.
+
+The Boxes are generally designed to provide the most relevant information in the clearest possible way. There are some base Boxes and gauges that can easily be extended to display new data values, but you are not forced to use these if a different display represents the data better, e.g. the rudder angle Box is specifically designed so it can be place along the bottom of a Page, in contrast to other dashboards where you have to display the rudder angle in a standard needle gauge.
+
+
+For a fuller example, the design decisions for the wind rose include:
+- not cluttering the display with anything, e.g. outlines of boats.
+- prioritising the apparent wind information, as this is what you sail to, e.g. the wind speed boxes move to give the best view of the apparent wind needle. 
+- prioritising the speed boxes over the true wind direction so that the true wind needle does not obscure the speeds. Note: there is an option to display the true wind needle over the speed boxes if desired.
+- an option to remove the labels/text, as you're unlikely to be reading the numbers very often. This removes more clutter, especially if the display is small.
+- an option to maximise the size of the speed boxes so that they are more readable at a distance. This obscures more of the rose, but will never obscure the apparent wind needle.
+
+This is in contrast to trying to replicate a classic physical instrument, like a Raymarine i60. The physical instrument can't switch between a standard and close hauled rose, is cluttered with text and boat outline and has a small speed display that's difficult to see from a distance and can be obscured by the needle.
+
+If the app is missing a Box for data you would like, then please raise a [request/issue](https://github.com/philseeley/boatinstrument/issues), or if you would like to collaborate please get in touch.
+
 ## Box Path Mapping
 
 When a page is displayed, the Boxes register the paths they require. After consolidation to remove any duplicates, the app then subscribes to these via a SignalK WebSocket.
