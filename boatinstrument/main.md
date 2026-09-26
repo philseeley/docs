@@ -52,7 +52,7 @@ For a fuller example, the design decisions for the wind rose include:
 
 This is in contrast to trying to replicate a classic physical instrument, like a Raymarine i60. The physical instrument can't switch between a standard and close hauled rose, is cluttered with text and boat outline and has a small speed display that's difficult to see from a distance and can be obscured by the needle.
 
-If the app is missing a Box for data you would like, then please raise a [request/issue](https://github.com/philseeley/boatinstrument/issues), or if you would like to collaborate please get in touch.
+If the app is missing a Box for data you would like, then please raise an [request/issue](https://github.com/philseeley/boatinstrument/issues), or if you would like to collaborate please get in touch.
 
 ## Box Path Mapping
 
